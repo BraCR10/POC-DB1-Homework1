@@ -15,7 +15,7 @@ const dbConfig: config = {
   },
 };
 
-async function query(
+export async function query(
   storedProcedure: string,
   params: SqlParameters | any,
 ): Promise<IResult<any>> {
@@ -27,14 +27,13 @@ async function query(
 
     for (const key in Object.keys(params)) {
       const param = key;
-      const type = params[param][1];
-      const value = params[param][0];
+      const type = params[key][1];
+      const value = params[key][0];
       request.input(param, type, value);
     }
     const result = await request.execute(storedProcedure);
 
     return result;
-    
   } catch (error) {
     console.log("Query failed due to: " + error);
     throw error;
