@@ -1,7 +1,7 @@
 export enum SqlTypes {
-    STRING,
-    NUMBER, 
-    BOOLEAN,
-    DATE,
-    NULL
+  STRING,
+  NUMBER,
+  BOOLEAN,
+  DATE,
+  NULL,
 }
