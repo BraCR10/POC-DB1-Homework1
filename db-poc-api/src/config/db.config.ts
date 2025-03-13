@@ -1,7 +1,6 @@
 import { config, ConnectionPool, IResult } from "mssql";
 import { config as SQLAuth } from "dotenv";
 import { SqlParameters } from "../types/queryParams.type";
-import { convertToSqlType } from "../utils/getSqlType";
 
 SQLAuth();
 
@@ -28,13 +27,14 @@ async function query(
 
     for (const key in Object.keys(params)) {
       const param = key;
-      const type = convertToSqlType(params[param][1]);
+      const type = params[param][1];
       const value = params[param][0];
       request.input(param, type, value);
     }
     const result = await request.execute(storedProcedure);
 
     return result;
+    
   } catch (error) {
     console.log("Query failed due to: " + error);
     throw error;

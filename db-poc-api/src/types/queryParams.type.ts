@@ -1,4 +1,4 @@
-import { SqlTypes } from "../enums/sqlTypes.enum";
+import { TYPES } from "mssql";
 
 // param name : [value, type]
-export type SqlParameters = Record<string, [string, SqlTypes]>;
+export type SqlParameters = Record<string, [string, typeof TYPES]>;
