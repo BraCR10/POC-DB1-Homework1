@@ -51,7 +51,7 @@ class EmployeeService {
     try {
       const response = await query("sp_get_employee_by_id", params);
 
-      if (response.recordset.length > 0) {
+      if (response.recordset && response.recordset.length > 0) {
         return response.recordset[0];
       } else {
         throw new Error("Employee not found");
