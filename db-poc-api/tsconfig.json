@@ -20,6 +20,7 @@
     "declaration": true, // Generates declaration files (.d.ts).
     "sourceMap": true, // Generates source map files.
     "outDir": "./dist", // Specifies the output directory for compiled files.
+    "rootDir": "./src",
 
     /* Type Checking */
     "strict": true, // Enables all strict type checks.
