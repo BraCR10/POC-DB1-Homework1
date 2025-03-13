@@ -10,15 +10,17 @@ GO
 -- Create Date: <13/3/2025>
 -- Description: <Get all employees>
 -- =============================================
-CREATE PROCEDURE sp_get_all_employees
+CREATE PROCEDURE sp_get_employee_by_id(
+	@id INT
+)
 AS
 BEGIN
     -- Retun data to backend
     SELECT 
         id AS ID, 
-        Nombre AS Name, 
+        Nombre AS NAME, 
         Salario AS Salary 
     FROM dbo.Empleado AS Emp
-    ORDER BY Emp.id
+    WHERE Emp.id = @id
 END
 GO

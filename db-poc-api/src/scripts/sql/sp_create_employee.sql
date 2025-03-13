@@ -13,7 +13,7 @@ GO
 CREATE PROCEDURE sp_create_employee
 (
 	@name VARCHAR(32),
-	@salary Money
+	@salary MONEY
 )
 AS
 BEGIN
@@ -30,8 +30,8 @@ BEGIN
           id AS ID, 
           Nombre AS Name,
           Salario AS Salary
-        FROM dbo.Empleado 
-        WHERE id = SCOPE_IDENTITY()
+        FROM dbo.Empleado AS Emp
+        WHERE Emp.id = SCOPE_IDENTITY()
     END
     ELSE
     BEGIN
