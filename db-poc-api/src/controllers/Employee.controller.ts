@@ -38,6 +38,17 @@ export const getEmployees = async (req: Request, res: Response): Promise<void> =
     }
 };
 
+export const getEmployeesSortedByName = async (req: Request, res: Response): Promise<void> => {
+  try {
+      const response = await EmployeeService.getEmployeesSortedByName();
+      res.status(200).json({ success: true, data: response });
+  } catch (error) {
+      const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+      res.status(500).json({ success: false, error: errorMessage });
+  }
+};
+
 export const getEmployeeById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;

@@ -61,6 +61,21 @@ class EmployeeService {
       throw new Error(`An error occurred while fetching the employee: ${error}`);
     }
   }
+
+  async getEmployeesSortedByName(): Promise<Employee[]> {
+    try {
+      const response = await query("sp_get_all_employees", {});
+
+      if (!response.recordset) {
+        throw new Error("No employees data returned from the database.");
+      }
+  
+      return response.recordset.sort((a, b) => a.Name.localeCompare(b.Name));
+    } catch (error) {
+      console.error("Error details:", error);
+      throw new Error(`An error occurred while fetching the employs: ${error}`);
+    }
+  }
 }
 
 export default new EmployeeService();
