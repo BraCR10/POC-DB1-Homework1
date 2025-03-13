@@ -6,8 +6,8 @@ import { SqlParameters } from "../types/queryParams.type";
 class EmployeeService {
   async createEmployee(name: string, money: number): Promise<Employee> {
     const params: SqlParameters = {
-      nombre: [name, TYPES.VarChar],
-      salario: [money.toString(), TYPES.Money],
+      name: [name, TYPES.VarChar],
+      salary: [money.toString(), TYPES.Money],
     };
 
     try {
