@@ -54,11 +54,11 @@ class EmployeeService {
       if (response.recordset.length > 0) {
         return response.recordset[0];
       } else {
-        throw new Error("Employ not found");
+        throw new Error("Employee not found");
       }
     } catch (error) {
       console.error("Error details:", error);
-      throw new Error(`An error occurred while fetching the employ: ${error}`);
+      throw new Error(`An error occurred while fetching the employee: ${error}`);
     }
   }
 }

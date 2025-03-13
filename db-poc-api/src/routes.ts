@@ -8,7 +8,7 @@ router.get("/health", (req, res) => {
 });
 
 router.post("/employee", createEmployee);
-router.get("/employees", getEmployees);
-router.get("/employees:id", getEmployeeById);
+router.get("/employee", getEmployees);
+router.get('/employee/:id', getEmployeeById);
 
 export default router;
