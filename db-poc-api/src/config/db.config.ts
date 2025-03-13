@@ -24,10 +24,6 @@ export async function initConnection(): Promise<void> {
   } catch (error) {
     console.log("Connection failed due to: " + error);
     throw error;
-  } finally {
-    if (dbListener) {
-      await dbListener.close();
-    }
   }
 }
 
@@ -37,22 +33,21 @@ export async function query(
 ): Promise<IResult<any>> {
   try {
     const request = dbListener.request();
-
-    for (const key in Object.keys(params)) {
-      const param = key;
-      const type = params[key][1];
-      const value = params[key][0];
-      request.input(param, type, value);
+    if (Object.keys(params).length > 0){
+        for (const key in Object.keys(params)) {
+        const param = key;
+        const type = params[key][1];
+        const value = params[key][0];
+        request.input(param, type, value);
+        }
     }
+
+
     const result = await request.execute(storedProcedure);
 
     return result;
   } catch (error) {
     console.log("Query failed due to: " + error);
     throw error;
-  } finally {
-    if (dbListener) {
-      await dbListener.close();
-    }
-  }
+  } 
 }

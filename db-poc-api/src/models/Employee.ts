@@ -1,4 +1,4 @@
-export type Employ = {
+export type Employee = {
   id: number;
   name: string;
 };

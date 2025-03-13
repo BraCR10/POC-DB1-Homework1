@@ -1,17 +1,17 @@
-import { Employ } from "../models/Employ";
+import { Employee } from "../models/Employee";
 import { query } from "../config/db.config";
 import { TYPES } from "mssql";
 import { SqlParameters } from "../types/queryParams.type";
 
-class EmployService {
-  async createEmploy(name: string, money: number): Promise<Employ> {
+class EmployeeService {
+  async createEmployee(name: string, money: number): Promise<Employee> {
     const params: SqlParameters = {
       nombre: [name, TYPES.VarChar],
       salario: [money.toString(), TYPES.Money],
     };
 
     try {
-      const response = await query("createEmploy", params);
+      const response = await query("sp_create_employee", params);
 
       if (response.recordset.length > 0) {
         return response.recordset[0];
@@ -24,9 +24,9 @@ class EmployService {
     }
   }
 
-  async getEmploys(): Promise<Employ[]> {
+  async getEmployees(): Promise<Employee[]> {
     try {
-      const response = await query("getEmploys", {});
+      const response = await query("sp_get_all_employees", {});
 
       if (response.recordset.length > 0) {
         return response.recordset;
@@ -39,7 +39,7 @@ class EmployService {
     }
   }
 
-  async getEmployById(id: number): Promise<Employ> {
+  async getEmployeeById(id: number): Promise<Employee> {
     if (!id || id < 1) {
       throw new Error("Invalid id");
     }
@@ -49,7 +49,7 @@ class EmployService {
     };
 
     try {
-      const response = await query("getEmployById", params);
+      const response = await query("sp_get_employee_by_id", params);
 
       if (response.recordset.length > 0) {
         return response.recordset[0];
@@ -63,4 +63,4 @@ class EmployService {
   }
 }
 
-export default new EmployService();
+export default new EmployeeService();
