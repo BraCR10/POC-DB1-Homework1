@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createEmployee, getEmployees, getEmployeeById } from "./controllers/Employee.controller";
+import { createEmployee, getEmployees, getEmployeeById,getEmployeesSortedByName } from "./controllers/Employee.controller";
 
 const router = Router();
 
@@ -10,5 +10,6 @@ router.get("/health", (req, res) => {
 router.post("/employee", createEmployee);
 router.get("/employee", getEmployees);
 router.get('/employee/:id', getEmployeeById);
+router.get('/sorted_employees', getEmployeesSortedByName);
 
 export default router;
