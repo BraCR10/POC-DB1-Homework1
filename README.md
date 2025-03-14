@@ -6,7 +6,7 @@
 
 📱 This project is a proof of concept (POC) that demonstrates the implementation of a REST API to manage employees, using TypeScript, Express, and SQL Server. The application is divided into two parts: a backend API (db-poc-api) and a frontend user interface (db-poc-ui) developed with Next.js.
 
-[Medium Blog](https://medium.com/@bracr10)
+Bitacoras del proyecto: [Medium Blog](https://medium.com/@bracr10)
 
 ## Tecnologías / Technologies
 
