@@ -1,7 +1,6 @@
 import { config, ConnectionPool, IResult } from "mssql";
 import { config as SQLAuth } from "dotenv";
 import { SqlParameters } from "../types/queryParams.type";
-import { cp } from "fs";
 import { console } from "inspector";
 
 SQLAuth();
