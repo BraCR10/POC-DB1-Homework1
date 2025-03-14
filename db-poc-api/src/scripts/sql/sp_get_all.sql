@@ -15,10 +15,10 @@ AS
 BEGIN
     -- Retun data to backend
     SELECT 
-        id AS ID, 
-        Nombre AS Name, 
-        Salario AS Salary 
-    FROM dbo.Empleado AS Emp
-    ORDER BY Emp.id
+        E.id AS ID, 
+        E.Nombre AS Name, 
+        E.Salario AS Salary 
+    FROM dbo.Empleado AS E
+    ORDER BY E.id
 END
 GO

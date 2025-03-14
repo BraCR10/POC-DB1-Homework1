@@ -18,7 +18,7 @@ CREATE PROCEDURE sp_create_employee
 AS
 BEGIN
     DECLARE @employeeID Int
-    SELECT @employeeID = id FROM dbo.Empleado AS Emp WHERE Emp.Nombre = @name
+    SELECT @employeeID = E.id FROM dbo.Empleado AS E WHERE E.Nombre = @name
     
     IF (@employeeID IS  NULL)
     BEGIN
@@ -27,11 +27,11 @@ BEGIN
         
         -- Retun data to backend
         SELECT 
-          id AS ID, 
-          Nombre AS Name,
-          Salario AS Salary
-        FROM dbo.Empleado AS Emp
-        WHERE Emp.id = SCOPE_IDENTITY()
+          E.id AS ID, 
+          E.Nombre AS Name,
+          E.Salario AS Salary
+        FROM dbo.Empleado AS E
+        WHERE (E.id = SCOPE_IDENTITY())
     END
     ELSE
     BEGIN

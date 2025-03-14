@@ -17,10 +17,10 @@ AS
 BEGIN
     -- Retun data to backend
     SELECT 
-        id AS ID, 
-        Nombre AS NAME, 
-        Salario AS Salary 
-    FROM dbo.Empleado AS Emp
-    WHERE Emp.id = @id
+        E.id AS ID, 
+        E.Nombre AS NAME, 
+        E.Salario AS Salary 
+    FROM dbo.Empleado AS E
+    WHERE (E.id = @id)
 END
 GO
