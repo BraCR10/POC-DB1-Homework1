@@ -43,6 +43,7 @@ function InsertEmployeePopup({ isOpen, onClose, onSubmit }: InsertEmployeePopupP
     } catch (error) {
       setStatus("error");
       setErrorMessage("Error al añadir empleado, intente mas tarde");
+      throw error;
     }
   };
 
