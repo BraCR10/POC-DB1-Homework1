@@ -13,14 +13,14 @@ function Board() {
       setLoading(false);
       setEmployees(data);
     };
-    
+
     fetchData();
   }, []);
 
   return (
     <div className="board">
       {loading ? (
-        <h1>Loading...</h1>
+        <h1>Cargando datos...</h1>
       ) : (
         employees.map((empl, index) => (
           <RowCard
