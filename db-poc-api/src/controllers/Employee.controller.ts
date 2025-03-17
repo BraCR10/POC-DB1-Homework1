@@ -6,18 +6,18 @@ export const createEmployee = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const { name, money } = req.body;
+    const {Name,Salary} = req.body;
 
-    if (!name || name === "") {
+    if (!Name || Name === "") {
       res.status(400).json({ message: "Name is required" });
       return;
     }
-    if (!money || money < 0) {
+    if (!Salary || Salary < 0) {
       res.status(400).json({ message: "Valid money value is required" });
       return;
     }
 
-    const response = await EmployeeService.createEmployee(name, money);
+    const response = await EmployeeService.createEmployee(Name, Salary);
 
     res.status(201).json({ success: true, data: response });
   } catch (error) {
