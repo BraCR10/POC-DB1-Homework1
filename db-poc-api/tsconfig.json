@@ -14,7 +14,7 @@
       "*": ["node_modules/*"] // Specifies where TypeScript can find modules.
     },
     "typeRoots": ["node_modules/@types", "src/types"], // Directories where type definitions will be searched.
-    "types": ["node", "connect"], // Add the type packages you need here.
+    "types": [],
 
     /* Generation */
     "declaration": true, // Generates declaration files (.d.ts).

@@ -5,8 +5,15 @@ import Router from "./routes";
 
 const app = express();
 
+const corsdata = [
+  "http://localhost:3001",
+  "https://employeesapp-gamma.vercel.app"
+];
+
+
+
 const corsOptions = {
-  origin: "https://employeesapp-gamma.vercel.app", 
+  origin: "http://localhost:3001", 
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true, 
