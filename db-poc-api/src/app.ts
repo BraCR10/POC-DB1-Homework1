@@ -5,6 +5,7 @@ import Router from "./routes";
 
 const app = express();
 
+//TODO: Add the allowed origins to the corsdata array
 const corsdata = [
   "http://localhost:3001",
   "https://employeesapp-gamma.vercel.app"
@@ -13,7 +14,7 @@ const corsdata = [
 
 
 const corsOptions = {
-  origin: "http://localhost:3001", 
+  origin: "https://employeesapp-gamma.vercel.app", 
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true, 
