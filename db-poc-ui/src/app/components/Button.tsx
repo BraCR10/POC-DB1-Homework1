@@ -8,13 +8,7 @@ interface ButtonProps {
 }
 
 function Button({ label, onClick }: ButtonProps) {
-  return (
-    <button
-      onClick={onClick}
-    >
-      {label}
-    </button>
-  );
+  return <button className="dashboard-button" onClick={onClick}>{label}</button>;
 }
 
 export default Button;

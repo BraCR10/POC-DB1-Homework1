@@ -7,7 +7,7 @@ interface RowCardProps {
   className?: string;
 }
 
-function RowCard({ id, name, salary , className }: RowCardProps) {
+function RowCard({ id, name, salary, className }: RowCardProps) {
   return (
     <div className={`row-${className ? className : ""}`}>
       <div className="id">
@@ -19,7 +19,6 @@ function RowCard({ id, name, salary , className }: RowCardProps) {
       <div className="salary">
         <h1>{salary}</h1>
       </div>
-      
     </div>
   );
 }
