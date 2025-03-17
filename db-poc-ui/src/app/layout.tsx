@@ -1,7 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
+/*import { Geist, Geist_Mono } from "next/font/google";*/
 import "./styles/globals.css";
 
-const geistSans = Geist({
+/*const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
@@ -9,7 +9,7 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
+});*/
 
 export default function RootLayout({
   children,

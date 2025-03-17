@@ -19,6 +19,10 @@ export async function getEmployees(): Promise<Employee[]> {
     return employees.data;
   } catch (e) {
     console.log("Employee data not found ${e}");
-    throw Error("Employee data not found ${e}");
+    if (e instanceof Error) {
+      throw new Error("Employee data not found: " + e.message);
+    } else {
+      throw new Error("Employee data not found");
+    }
   }
 }
