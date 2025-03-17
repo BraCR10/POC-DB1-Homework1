@@ -1,8 +1,18 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 import { initConnection } from "./config/db.config";
 import Router from "./routes";
+
 const app = express();
 
+const corsOptions = {
+  origin: "https://employeesapp-gamma.vercel.app", 
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+  credentials: true, 
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api", Router);
 
