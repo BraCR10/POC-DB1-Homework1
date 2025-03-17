@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --paragraph: #f0f0f0;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.row-board {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 0.5rem; 
+  padding: 0.5rem;
+  border: 1px solid #e5e5e5;
+  
+}
+
+.row-board div {
+  border-radius: 0.25rem;
+  background-color: #2a2a2a; 
+  border: 1px solid #444444; 
+}
+
+.row-board h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.row-dashboard {
+  display: grid;
+  
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 0.5rem; 
+  padding: 0.5rem;
+  border: 1px solid #e5e5e5;
+  margin: auto 40 auto 20; 
+}
+
+.row-dashboard div {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #2a2a2a; /* Fondo de cada celda */
+  border: 1px solid #444444; /* Borde visible en las celdas */
+}
+
+.row-dashboard h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+ 
+}
+
+h1 {
+  text-align: center;
+
+}
+.row .name {
+  text-align: center;
+}
+
+.row .salary {
+  text-align: center;
+}
+
+.row .id {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .row-board {
+    margin: auto auto auto auto;
+  }
+
+  .row-dashboard {
+    margin: auto auto auto auto; 
+  }
+}
