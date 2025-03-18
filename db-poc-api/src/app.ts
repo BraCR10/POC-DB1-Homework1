@@ -8,16 +8,14 @@ const app = express();
 //TODO: Add the allowed origins to the corsdata array
 const corsdata = [
   "http://localhost:3001",
-  "https://employeesapp-gamma.vercel.app"
+  "https://employeesapp-gamma.vercel.app",
 ];
 
-
-
 const corsOptions = {
-  origin: "https://employeesapp-gamma.vercel.app", 
+  origin: "https://employeesapp-gamma.vercel.app",
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
-  credentials: true, 
+  credentials: true,
 };
 
 app.use(cors(corsOptions));

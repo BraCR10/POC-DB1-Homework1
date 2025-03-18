@@ -27,45 +27,41 @@ class EmployeeService {
   async getEmployees(): Promise<Employee[]> {
     const maxRetries = 5;
     let retryCount = 0;
-    let delay = 1000; 
-  
+    let delay = 1000;
+
     while (retryCount < maxRetries) {
       try {
         const response = await query("sp_get_all_employees", {});
-        
-        if (!response || !response.recordset) {
-          retryCount++;
-          if (retryCount >= maxRetries) {
-            throw new Error("Database is unreachable");
-          }
-          
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2; 
-          continue;
-        }
-  
-        if (response.recordset.length > 0) {
+        if (response.recordset) {
           return response.recordset;
         } else {
-          throw new Error("No employees found");
+          return [];
         }
       } catch (error) {
         retryCount++;
-        
+
         if (retryCount >= maxRetries) {
           console.error("Error many attempts:", error);
-          throw new Error(`An error occurred after ${maxRetries} attempts: ${error}`);
+          throw new Error(
+            `An error occurred after ${maxRetries} attempts: ${error}`,
+          );
         }
-        
-        console.log(`Attempt ${retryCount}/${maxRetries} failed, re-trying ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+
+        console.log(
+          `Attempt ${retryCount}/${maxRetries} failed, re-trying ${delay}ms...`,
+        );
+        await new Promise((resolve) => setTimeout(resolve, delay));
         delay *= 2;
       }
     }
-    throw new Error("Error fetching employees");
+    throw new Error("No employees data returned from the database.");
   }
 
-  async getEmployeeById(id: number): Promise<Employee> {
+  async getEmployeeById(id: number): Promise<Employee[]> {
+    const maxRetries = 5;
+    let retryCount = 0;
+    let delay = 1000;
+
     if (!id || id < 1) {
       throw new Error("Invalid id");
     }
@@ -74,18 +70,32 @@ class EmployeeService {
       id: [id.toString(), TYPES.Int],
     };
 
-    try {
-      const response = await query("sp_get_employee_by_id", params);
+    while (retryCount < maxRetries) {
+      try {
+        const response = await query("sp_get_employee_by_id", params);
+        if (response.recordset && response.recordset.length > 0) {
+          return response.recordset[0];
+        } else {
+          throw new Error("Employee not found");
+        }
+      } catch (error) {
+        retryCount++;
 
-      if (response.recordset && response.recordset.length > 0) {
-        return response.recordset[0];
-      } else {
-        throw new Error("Employee not found");
+        if (retryCount >= maxRetries) {
+          console.error("Error many attempts:", error);
+          throw new Error(
+            `An error occurred after ${maxRetries} attempts: ${error}`,
+          );
+        }
+
+        console.log(
+          `Attempt ${retryCount}/${maxRetries} failed, re-trying ${delay}ms...`,
+        );
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        delay *= 2;
       }
-    } catch (error) {
-      console.error("Error details:", error);
-      throw new Error(`An error occurred while fetching the employee: ${error}`);
     }
+    throw new Error("No employee data returned from the database.");
   }
 
   async getEmployeesSortedByName(): Promise<Employee[]> {
@@ -95,7 +105,7 @@ class EmployeeService {
       if (!response.recordset) {
         throw new Error("No employees data returned from the database.");
       }
-  
+
       return response.recordset.sort((a, b) => a.Name.localeCompare(b.Name));
     } catch (error) {
       console.error("Error details:", error);

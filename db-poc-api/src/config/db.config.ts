@@ -33,16 +33,14 @@ export async function query(
   params: SqlParameters | any,
 ): Promise<IResult<any>> {
   try {
-    
     const request = dbListener.request();
-    if (Object.keys(params).length > 0){
+    if (Object.keys(params).length > 0) {
       for (const key of Object.keys(params)) {
         const type = params[key][1];
         const value = params[key][0];
         request.input(key, type, value);
-        }
+      }
     }
-    
 
     const result = await request.execute(storedProcedure);
 
@@ -50,5 +48,5 @@ export async function query(
   } catch (error) {
     console.log("Query failed due to: " + error);
     throw error;
-  } 
+  }
 }
