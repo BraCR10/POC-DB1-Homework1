@@ -23,7 +23,7 @@ function InsertEmployeePopup({ isOpen, onClose, onSubmit }: InsertEmployeePopupP
       return;
     }
 
-    if (!/^[a-zA-Z-]+$/.test(name)) {
+    if (!/^[a-zA-Z- ]+$/.test(name)) {
       setStatus("error");
       setErrorMessage("El nombre solo puede contener caracteres alfanuméricos o guiones");
       return;
