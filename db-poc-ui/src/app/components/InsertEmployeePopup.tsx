@@ -22,6 +22,12 @@ function InsertEmployeePopup({ isOpen, onClose, onSubmit }: InsertEmployeePopupP
       setErrorMessage("El nombre debe ser mayor a 5 caracteres");
       return;
     }
+
+    if (!/^[a-zA-Z-]+$/.test(name)) {
+      setStatus("error");
+      setErrorMessage("El nombre solo puede contener caracteres alfanuméricos o guiones");
+      return;
+    }
     
     if (!salary.trim() || isNaN(Number(salary)) || Number(salary) <= 0) {
       setStatus("error");
@@ -42,7 +48,7 @@ function InsertEmployeePopup({ isOpen, onClose, onSubmit }: InsertEmployeePopupP
       }, 2000);
     } catch (error) {
       setStatus("error");
-      setErrorMessage("Error al añadir empleado, intente mas tarde");
+      setErrorMessage("Error al añadir empleado, use otro nombre o intente mas tarde");
       throw error;
     }
   };
