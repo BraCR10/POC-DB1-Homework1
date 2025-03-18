@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import RowCard from "../components/RowCard";
 import InsertEmployeePopup from "../components/InsertEmployeePopup";
 import { insertEmployee } from "../services/insertEmployee";
-
+import Github from "../assets/Github.png";
 export default function Dashboard() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
@@ -29,17 +29,17 @@ export default function Dashboard() {
       <h1>Plantilla de Empleados</h1>
       <RowCard id="ID" name="Nombre" salary="Salario" className="dashboard" />
       <Board key={refreshTrigger} />
-      <Button label="Insertar" onClick={handleOpenPopup} />
-
+      <div className="button-container">
+        <Button label="Insertar" onClick={handleOpenPopup} />
+        <a href="https://github.com/BraCR10/POC-DB1-Homework1" target="_blank">
+          <img src={Github.src} alt="Go to GitHub" />
+        </a>
+      </div>
       <InsertEmployeePopup
         isOpen={isPopupOpen}
         onClose={handleClosePopup}
         onSubmit={handleInsertEmployee}
-      />
-
-    <a href="https://github.com/BraCR10/POC-DB1-Homework1" target="_blank">
-        <img src="https://commons.wikimedia.org/wiki/File:Github-desktop-logo-symbol.svg" alt="Go to GitHub" width="300">
-    </a>
+      />  
     </div>
   );
 }
