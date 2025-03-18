@@ -36,6 +36,10 @@ export default function Dashboard() {
         onClose={handleClosePopup}
         onSubmit={handleInsertEmployee}
       />
+
+    <a href="https://github.com/BraCR10/POC-DB1-Homework1" target="_blank">
+        <img src="https://commons.wikimedia.org/wiki/File:Github-desktop-logo-symbol.svg" alt="Go to GitHub" width="300">
+    </a>
     </div>
   );
 }
