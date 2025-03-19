@@ -1,4 +1,6 @@
-INSERT INTO dbo.Empleado (Nombre, Salario)
+-- Initial Query
+INSERT INTO 
+    dbo.Empleado (Nombre, Salario)
 VALUES 
     ('Juan-Perez-Garcia', 200000.75),
     ('Maria-Rodriguez-Fernandez', 210500.50),

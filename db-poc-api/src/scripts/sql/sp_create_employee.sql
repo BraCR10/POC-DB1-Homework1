@@ -1,10 +1,11 @@
 -- =======================================================
 -- Create Stored Procedure Template for Azure SQL Database
 -- =======================================================
-SET ANSI_NULLS ON
+SET ANSI_NULLS ON;
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER ON;
 GO
+
 -- =============================================
 -- Author:      <BRACR10>
 -- Create Date: <13/3/2025>
@@ -12,35 +13,43 @@ GO
 -- =============================================
 CREATE PROCEDURE sp_create_employee
 (
-	@name VARCHAR(32),
-	@salary MONEY
+	@inName VARCHAR(32)
+  , @inSalary MONEY
+  , @outResultCode INT OUTPUT
+
 )
 AS
 BEGIN
-    DECLARE @employeeID Int
-    SELECT @employeeID = E.id FROM dbo.Empleado AS E WHERE E.Nombre = @name
+  SET NOCOUNT ON;
+  BEGIN TRY
+    
+    DECLARE @employeeID INT;
+
+    SELECT 
+      @employeeID = E.id 
+    FROM 
+      dbo.Empleado AS E 
+    WHERE 
+      (E.Nombre = @inName);
     
     IF (@employeeID IS  NULL)
     BEGIN
-        INSERT INTO dbo.Empleado (Nombre, Salario)
-        VALUES (@name, @salary)
+        INSERT INTO 
+          dbo.Empleado (Nombre, Salario)
+        VALUES 
+          (@name, @salary);
         
         -- Retun data to backend
-        SELECT 
-          E.id AS ID, 
-          E.Nombre AS Name,
-          E.Salario AS Salary
-        FROM dbo.Empleado AS E
-        WHERE (E.id = SCOPE_IDENTITY())
+        SET @outResultCode = 0; -- SUCESS
     END
     ELSE
     BEGIN
-      RAISERROR (
-        'Error: The employee name "%s" already exists.', 
-        16,    -- Severity 
-        127,     -- State 
-        @name  
-      );
+      SET @outResultCode = 5001; -- Error : User already exist
     END
+  END TRY
+  BEGIN CATCH
+    SET @outResultCode = 5005; -- Error : DB error
+  END CATCH
+  SET NOCOUNT OFF;
 END
 GO
