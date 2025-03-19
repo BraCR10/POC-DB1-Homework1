@@ -18,7 +18,7 @@ BEGIN
     -- Retun data to backend
     SELECT 
         E.id AS ID, 
-        E.Nombre AS NAME, 
+        E.Nombre AS Name, 
         E.Salario AS Salary 
     FROM dbo.Empleado AS E
     WHERE (E.id = @id)
