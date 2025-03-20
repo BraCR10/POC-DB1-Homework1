@@ -26,7 +26,7 @@ function Board() {
           <RowCard
             key={index}
             id={String(empl.ID)}
-            name={empl.Name}
+            name={empl.NameEmployee}
             salary={"$ " + String(empl.Salary)}
             className="board"
           />

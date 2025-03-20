@@ -8,7 +8,7 @@ export async function getEmployees(): Promise<Employee[]> {
   try {
     console.log("Fetching employee data");
     const response = await fetch(
-      "https://employeesapi-beta.vercel.app/api/sorted_employees",
+      "https://employeesapi-beta.vercel.app/api/sorted_employee",
     );
     if (!response.ok) {
       console.log(response);
