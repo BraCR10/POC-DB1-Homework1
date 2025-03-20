@@ -15,6 +15,6 @@ router.get("/health", (req, res) => {
 router.post("/employee", createEmployee);
 router.get("/employee", getEmployees);
 router.get("/employee/:id", getEmployeeById);
-router.get("/sorted_employees", getEmployeesSortedByName);
+router.get("/sorted_employee", getEmployeesSortedByName);
 
 export default router;

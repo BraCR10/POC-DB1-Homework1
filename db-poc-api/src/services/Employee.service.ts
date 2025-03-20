@@ -50,7 +50,6 @@ class EmployeeService {
     try {
       const response = await query("sp_get_employee_by_id", inParams,{});
       if (response.output.outResultCode == 0) {
-        console.log(response.recordset)
         return response.recordset[0];
       } else {
         throw new Error("Employ was not created due to DB error");
