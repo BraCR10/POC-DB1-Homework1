@@ -1,10 +1,10 @@
 import { Employee } from "../models/Employee";
 import { query } from "../config/db.config";
 import { TYPES } from "mssql";
-import { inSqlParameters,outSqlParameters } from "../types/queryParams.type";
+import { inSqlParameters } from "../types/queryParams.type";
 
 class EmployeeService {
-  async createEmployee(name: string, money: number): Promise<Employee> {
+  async createEmployee(name: string, money: number): Promise<void> {
     const params: inSqlParameters = {
       inNameEmployee: [name, TYPES.VarChar],
       inSalary: [money.toString(), TYPES.Money],
@@ -13,7 +13,7 @@ class EmployeeService {
     try {
       const response = await query("sp_create_employee", params,{});
       if (response.output.outResultCode == 0) {
-        return response.recordset[0];
+        return;
       } else if( response.output.outResultCode == 5001){
         throw new Error("Employ was not created due to name already exist");
       }else {

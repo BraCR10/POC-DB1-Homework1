@@ -16,7 +16,7 @@ export const createEmployee = async (
       res.status(400).json({ message: "Valid money value is required" });
       return;
     }
-
+    
     const response = await EmployeeService.createEmployee(Name, Salary);
 
     res.status(201).json({ success: true, data: response });
