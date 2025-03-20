@@ -8,12 +8,12 @@ GO
 
 -- =============================================
 -- Author:      <BRACR10>
--- Create Date: <13/3/2025>
+-- Create Date: <19/3/2025>
 -- Description: <Insert Employee>
 -- =============================================
 CREATE PROCEDURE sp_create_employee
 (
-	@inName VARCHAR(32)
+	@inNameEmployee VARCHAR(32)
   , @inSalary MONEY
   , @outResultCode INT OUTPUT
 
@@ -30,14 +30,14 @@ BEGIN
     FROM 
       dbo.Empleado AS E 
     WHERE 
-      (E.Nombre = @inName);
+      (E.Nombre = @inNameEmployee);
     
     IF (@employeeID IS  NULL)
     BEGIN
         INSERT INTO 
           dbo.Empleado (Nombre, Salario)
         VALUES 
-          (@name, @salary);
+          (@inNameEmployee, @inSalary);
         
         -- Retun data to backend
         SET @outResultCode = 0; -- SUCESS

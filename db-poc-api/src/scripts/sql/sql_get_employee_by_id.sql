@@ -5,12 +5,10 @@ SET ANSI_NULLS ON;
 GO
 SET QUOTED_IDENTIFIER ON;
 GO
-SET NOCOUNT ON;
-GO
 -- =============================================
 -- Author:      <BRAC10>
--- Create Date: <13/3/2025>
--- Description: <Get all employees>
+-- Create Date: <18/3/2025>
+-- Description: <Get an employee>
 -- =============================================
 CREATE PROCEDURE sp_get_employee_by_id(
 	@inId INT
