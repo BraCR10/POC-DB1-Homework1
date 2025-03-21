@@ -160,25 +160,31 @@ body {
   gap: 0.5rem;
   padding: 0.5rem;
   border: 1px solid var(--border-color);
-}
-
-.row-board {
   grid-template-columns: repeat(3, 1fr);
+
 }
 
 .row-dashboard {
-  grid-template-columns: repeat(3, 1fr);
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  flex-grow: 1;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 .row-board div,
 .row-dashboard div {
   border-radius: 0.25rem;
   background-color: var(--background);
   border: 1px solid var(--border-color);
   transition: all 0.2s ease-in-out;
-  padding: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
-
+.row-board{
+  width: 98%;
+  margin: 0 auto; 
+}
 .row-board div:hover {
   background-color: var(--hover-background);
   border: 1px solid var(--hover-border);
