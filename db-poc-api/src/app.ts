@@ -12,7 +12,7 @@ const corsdata = [
 ];
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://employeesapp-gamma.vercel.app",
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
