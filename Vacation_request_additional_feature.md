@@ -282,7 +282,7 @@ PATCH /api/v2/vacation_request/:idSolicitud
 {
   "success": false,
   "error": {
-    "code": 50012,
+    "code": 50014,
     "detail": "Usuario no autorizado para tramitar solicitudes"
   }
 }
