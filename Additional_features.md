@@ -88,6 +88,9 @@ A screen should be created in the frontend that:
    - Current date
    - Total number of employees
     - Total number positions 
+## MockUp:
+![image](https://github.com/user-attachments/assets/4be4c8a1-7565-46ed-b8a5-d0f18e2f52f4)
+
 
 
 
