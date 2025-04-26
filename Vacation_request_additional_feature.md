@@ -25,7 +25,7 @@ Se requiere crear una tabla con la siguiente estructura:
 - `0` - Operación exitosa
 - `50004` - Valor de documento de identidad no válido
 - `50008` - Empleado no existe en el sistema o error de base de datos
-*Devolver como detail  desde la tabla Error la descripcion de los errores en el recordset*
+### *Devolver como detail  desde la tabla Error la descripcion de los errores en el recordset*
 
 **Comportamiento:**
 - Validar que el documento de identidad sea válido
@@ -76,7 +76,7 @@ Se requiere crear una tabla con la siguiente estructura:
 **Códigos de resultado:**
 - `0` - Operación exitosa
 - `50012` - Usuario desde tener los permisos para el tramite
-*Devolver como detail  desde la tabla Error la descripcion de los errores en el recordset*
+### *Devolver como detail  desde la tabla Error la descripcion de los errores en el recordset*
 **Referencia del SP llamado:**
 ```
 sp_insertar_movimiento
