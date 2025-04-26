@@ -52,6 +52,7 @@ GET /api/v2/stats_salaries
     "totalPuestos": 5,
     "totalEmpleados": 50,
     "totalGasto": 15000000,
+    "fecha": "2025-04-26T20:23:56.876Z"
     "puestos": [
       {
         "Nombre": "Albanil",
